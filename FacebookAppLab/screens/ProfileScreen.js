@@ -38,7 +38,7 @@ export default function ProfileScreen() {
     coverImage: coverImage,
   };
 
-  // ✅ Sample posts data with LOCAL IMAGES
+  // profile Sample posts data with LOCAL IMAGES
   const userPosts = [
     {
       id: '1',
