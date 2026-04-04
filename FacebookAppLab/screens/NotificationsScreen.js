@@ -7,41 +7,54 @@ import {
   Image,
   TouchableOpacity,
   StatusBar,
-  ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+//  IMPORT LOCAL IMAGES (use the same ones from HomeScreen)
+const profile1 = require('../assets/images/sasa.jpg');
+const profile2 = require('../assets/images/motechstory.jpg');
+const profile3 = require('../assets/images/messi.jpg');
+const profile4 = require('../assets/images/mawhoo.jpg');
+const profile5 = require('../assets/images/mufasaprofile.jpg');
+const profile6 = require('../assets/images/stunna.jpg');
+const profile7 = require('../assets/images/sasa.jpg');
+
+//  IMPORT LOCAL POST IMAGES (or use placeholder if you don't have them)
+const postImage1 = require('../assets/images/mufasapost.jpg');
+const postImage2 = require('../assets/images/mufasapost1.jpg');
+
 export default function NotificationsScreen() {
   const [activeTab, setActiveTab] = useState('all'); 
 
+  // Notifications Data with LOCAL IMAGES
   const notificationsData = [
     {
       id: '1',
       type: 'like',
       user: 'SaSa Letsie',
-      userImage: 'https://randomuser.me/api/portraits/women/1.jpg',
+      userImage: profile1,
       action: 'liked your post',
       time: '2 minutes ago',
       isRead: false,
-      postImage: 'https://picsum.photos/id/100/50/50',
+      postImage: postImage1,
     },
     {
       id: '2',
       type: 'comment',
       user: 'Mobile Tech',
-      userImage: 'https://randomuser.me/api/portraits/men/2.jpg',
+      userImage: profile2,
       action: 'commented on your photo',
       comment: 'Check out our laptops',
       time: '1 hour ago',
       isRead: false,
-      postImage: 'https://picsum.photos/id/20/50/50',
+      postImage: postImage2,
     },
     {
       id: '3',
       type: 'friend',
       user: 'Messi',
-      userImage: 'https://randomuser.me/api/portraits/women/3.jpg',
+      userImage: profile3,
       action: 'sent you friend request',
       time: '3 hours ago',
       isRead: true,
@@ -50,7 +63,7 @@ export default function NotificationsScreen() {
       id: '4',
       type: 'mention',
       user: 'MaWhoo',
-      userImage: 'https://randomuser.me/api/portraits/men/4.jpg',
+      userImage: profile4,
       action: 'mentioned you in a comment',
       comment: 'Your content is brilliant😍👌',
       time: '5 hours ago',
@@ -60,7 +73,7 @@ export default function NotificationsScreen() {
       id: '5',
       type: 'share',
       user: 'Mufasa Motsie',
-      userImage: 'https://randomuser.me/api/portraits/women/5.jpg',
+      userImage: profile5,
       action: 'shared your post',
       time: '1 day ago',
       isRead: true,
@@ -69,7 +82,7 @@ export default function NotificationsScreen() {
       id: '6',
       type: 'like',
       user: 'Ntate Stunna',
-      userImage: 'https://randomuser.me/api/portraits/men/6.jpg',
+      userImage: profile6,
       action: 'liked your comment',
       time: '3 day ago',
       isRead: true,
@@ -78,14 +91,13 @@ export default function NotificationsScreen() {
       id: '7',
       type: 'move',
       user: 'SaSa Letsie',
-      userImage: 'https://randomuser.me/api/portraits/women/7.jpg',
+      userImage: profile7,
       action: 'moved to Paris',
       time: '5 days ago',
       isRead: false,
     },
   ];
 
- 
   const getFilteredNotifications = () => {
     if (activeTab === 'mentions') {
       return notificationsData.filter(notif => notif.type === 'mention');
@@ -105,8 +117,8 @@ export default function NotificationsScreen() {
         return <Icon name="at" size={18} color="#FF9800" />;
       case 'share':
         return <Icon name="share" size={18} color="#9C27B0" />;
-      case 'birthday':
-        return <Icon name="cake" size={18} color="#FF5722" />;
+      case 'move':
+        return <Icon name="location" size={18} color="#1877F2" />;
       default:
         return <Icon name="notifications" size={18} color="#65676b" />;
     }
@@ -117,8 +129,8 @@ export default function NotificationsScreen() {
       {/* Unread indicator dot */}
       {!item.isRead && <View style={styles.unreadDot} />}
       
-      {/* User Image */}
-      <Image source={{ uri: item.userImage }} style={styles.userImage} />
+      {/* User Image - NOW USING LOCAL IMAGE */}
+      <Image source={item.userImage} style={styles.userImage} />
       
       {/* Notification Content */}
       <View style={styles.notificationContent}>
@@ -134,9 +146,9 @@ export default function NotificationsScreen() {
         <Text style={styles.timeText}>{item.time}</Text>
       </View>
       
-      {/* Post Image (if exists) */}
+      {/* Post Image (if exists) - NOW USING LOCAL IMAGE */}
       {item.postImage && (
-        <Image source={{ uri: item.postImage }} style={styles.postImage} />
+        <Image source={item.postImage} style={styles.postImage} />
       )}
       
       {/* Action Buttons for friend requests */}
@@ -152,30 +164,6 @@ export default function NotificationsScreen() {
       )}
     </TouchableOpacity>
   );
-
-  // Group notifications by date
-  const groupNotificationsByDate = () => {
-    const filtered = getFilteredNotifications();
-    const grouped = {
-      'Today': [],
-      'This Week': [],
-      'Earlier': []
-    };
-    
-    filtered.forEach(notif => {
-      if (notif.time === 'Today' || notif.time === '2 minutes ago' || notif.time === '1 hour ago') {
-        grouped['Today'].push(notif);
-      } else if (notif.time.includes('day')) {
-        grouped['This Week'].push(notif);
-      } else {
-        grouped['Earlier'].push(notif);
-      }
-    });
-    
-    return grouped;
-  };
-
-  const groupedNotifications = groupNotificationsByDate();
 
   return (
     <SafeAreaView style={styles.container}>

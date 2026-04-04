@@ -1,4 +1,3 @@
-// screens/AddPostScreen.js
 import React from 'react';
 import {
   View,
@@ -12,6 +11,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Avatar from '../components/Avatar';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+//  IMPORT LOCAL IMAGE for user avatar
+const userAvatar = require('../assets/images/mamosaprofile.jpg');
 
 export default function AddPostScreen({ navigation }) {
   return (
@@ -33,7 +35,7 @@ export default function AddPostScreen({ navigation }) {
         {/* User Info */}
         <View style={styles.userInfo}>
           <Avatar
-            source="https://randomuser.me/api/portraits/men/5.jpg"
+            source={userAvatar}  
             size={50}
           />
           <View style={styles.userTextInfo}>

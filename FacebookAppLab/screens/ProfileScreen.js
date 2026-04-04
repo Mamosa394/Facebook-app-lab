@@ -12,10 +12,18 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+//  IMPORT LOCAL IMAGES
+const profileImage = require('../assets/images/mamosaprofile.jpg');
+const coverImage = require('../assets/images/matchacover.jpg');
+
+//  IMPORT LOCAL POST IMAGES
+const postImage1 = require('../assets/images/mufasapost.jpg');
+const postImage2 = require('../assets/images/mufasapost1.jpg');
+
 export default function ProfileScreen() {
   const [activeTab, setActiveTab] = useState('posts'); 
 
-  
+  //  User data with LOCAL IMAGES
   const user = {
     name: 'Mamosa Motsie',
     username: '_motsie',
@@ -26,16 +34,16 @@ export default function ProfileScreen() {
     followers: '10.3',
     following: '567',
     posts: '3',
-    profileImage: 'https://randomuser.me/api/portraits/men/5.jpg',
-    coverImage: 'https://picsum.photos/id/104/400/200',
+    profileImage: profileImage,
+    coverImage: coverImage,
   };
 
-  // Sample posts data
+  // ✅ Sample posts data with LOCAL IMAGES
   const userPosts = [
     {
       id: '1',
       content: 'obsessed with ui design🔥!',
-      image: 'https://picsum.photos/id/20/400/300',
+      image: postImage1,
       likes: 128,
       comments: 24,
       time: '2 hours ago',
@@ -43,7 +51,7 @@ export default function ProfileScreen() {
     {
       id: '2',
       content: 'decided to take a warm walk today',
-      image: 'https://picsum.photos/id/15/400/300',
+      image: postImage2,
       likes: 89,
       comments: 12,
       time: '1 day ago',
@@ -58,30 +66,12 @@ export default function ProfileScreen() {
     },
   ];
 
-  // Sample photos data
-  const userPhotos = [
-    { id: '1', image: 'https://picsum.photos/id/100/200/200' },
-    { id: '2', image: 'https://picsum.photos/id/101/200/200' },
-    { id: '3', image: 'https://picsum.photos/id/102/200/200' },
-    { id: '4', image: 'https://picsum.photos/id/103/200/200' },
-    { id: '5', image: 'https://picsum.photos/id/104/200/200' },
-    { id: '6', image: 'https://picsum.photos/id/106/200/200' },
-  ];
-
-  // Sample friends data
-  const friends = [
-    { id: '1', name: 'SaSa Letsie', image: 'https://randomuser.me/api/portraits/women/1.jpg' },
-    { id: '2', name: 'Thabu Nkosi', image: 'https://randomuser.me/api/portraits/men/2.jpg' },
-    { id: '3', name: 'Matty M', image: 'https://randomuser.me/api/portraits/women/3.jpg' },
-    { id: '4', name: 'Mufasa King', image: 'https://randomuser.me/api/portraits/men/4.jpg' },
-  ];
-
   // Render post item
   const renderPost = ({ item }) => (
     <View style={styles.postCard}>
       <Text style={styles.postContent}>{item.content}</Text>
       {item.image && (
-        <Image source={{ uri: item.image }} style={styles.postImage} />
+        <Image source={item.image} style={styles.postImage} />
       )}
       <View style={styles.postStats}>
         <View style={styles.postStat}>
@@ -97,24 +87,6 @@ export default function ProfileScreen() {
     </View>
   );
 
-  // Render photo item
-  const renderPhoto = ({ item }) => (
-    <TouchableOpacity style={styles.photoItem}>
-      <Image source={{ uri: item.image }} style={styles.photoImage} />
-    </TouchableOpacity>
-  );
-
-  // Render friend item
-  const renderFriend = ({ item }) => (
-    <TouchableOpacity style={styles.friendItem}>
-      <Image source={{ uri: item.image }} style={styles.friendImage} />
-      <Text style={styles.friendName}>{item.name}</Text>
-      <TouchableOpacity style={styles.messageButton}>
-        <Icon name="chatbubble-outline" size={16} color="#1877F2" />
-      </TouchableOpacity>
-    </TouchableOpacity>
-  );
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#000" />
@@ -122,7 +94,7 @@ export default function ProfileScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Cover Photo */}
         <View style={styles.coverContainer}>
-          <Image source={{ uri: user.coverImage }} style={styles.coverImage} />
+          <Image source={user.coverImage} style={styles.coverImage} />
           
           {/* Edit Cover Button */}
           <TouchableOpacity style={styles.editCoverButton}>
@@ -133,7 +105,7 @@ export default function ProfileScreen() {
 
         {/* Profile Info */}
         <View style={styles.profileInfoContainer}>
-          <Image source={{ uri: user.profileImage }} style={styles.profileImage} />
+          <Image source={user.profileImage} style={styles.profileImage} />
           
           <View style={styles.profileActions}>
             <TouchableOpacity style={styles.addStoryButton}>
@@ -188,7 +160,7 @@ export default function ProfileScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Tabs */}
+        {/* Tabs - Keep all 3 but only Posts shows content */}
         <View style={styles.tabContainer}>
           <TouchableOpacity 
             style={[styles.tab, activeTab === 'posts' && styles.activeTab]}
@@ -215,7 +187,7 @@ export default function ProfileScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Tab Content */}
+        {/* Tab Content - Only Posts shows content, others show placeholder */}
         <View style={styles.tabContent}>
           {activeTab === 'posts' && (
             <FlatList
@@ -227,31 +199,16 @@ export default function ProfileScreen() {
           )}
           
           {activeTab === 'photos' && (
-            <FlatList
-              data={userPhotos}
-              keyExtractor={(item) => item.id}
-              renderItem={renderPhoto}
-              numColumns={3}
-              scrollEnabled={false}
-              contentContainerStyle={styles.photosGrid}
-            />
+            <View style={styles.emptyTabContainer}>
+              <Icon name="images-outline" size={48} color="#ccc" />
+              <Text style={styles.emptyTabText}>No photos to display</Text>
+            </View>
           )}
           
           {activeTab === 'friends' && (
-            <View>
-              <View style={styles.friendsHeader}>
-                <Text style={styles.friendsTitle}>Friends</Text>
-                <TouchableOpacity>
-                  <Text style={styles.seeAllText}>See All Friends</Text>
-                </TouchableOpacity>
-              </View>
-              <FlatList
-                data={friends}
-                keyExtractor={(item) => item.id}
-                renderItem={renderFriend}
-                scrollEnabled={false}
-                contentContainerStyle={styles.friendsList}
-              />
+            <View style={styles.emptyTabContainer}>
+              <Icon name="people-outline" size={48} color="#ccc" />
+              <Text style={styles.emptyTabText}>No friends to display</Text>
             </View>
           )}
         </View>
@@ -479,57 +436,14 @@ const styles = StyleSheet.create({
     color: '#65676b',
     marginLeft: 'auto',
   },
-  photosGrid: {
-    gap: 4,
-  },
-  photoItem: {
-    flex: 1,
-    margin: 2,
-  },
-  photoImage: {
-    width: '100%',
-    height: 120,
-    borderRadius: 8,
-  },
-  friendsHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  emptyTabContainer: {
     alignItems: 'center',
-    marginBottom: 12,
+    justifyContent: 'center',
+    paddingVertical: 60,
   },
-  friendsTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#050505',
-  },
-  seeAllText: {
-    fontSize: 13,
-    color: '#1877F2',
-  },
-  friendsList: {
-    gap: 12,
-  },
-  friendItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    padding: 12,
-    borderRadius: 12,
-    marginBottom: 8,
-  },
-  friendImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 12,
-  },
-  friendName: {
-    flex: 1,
-    fontSize: 15,
-    fontWeight: '500',
-    color: '#050505',
-  },
-  messageButton: {
-    padding: 8,
+  emptyTabText: {
+    fontSize: 16,
+    color: '#65676b',
+    marginTop: 12,
   },
 });

@@ -12,12 +12,16 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+//  IMPORT LOCAL IMAGES 
+const profile1 = require('../assets/images/sasa.jpg');
+const profile2 = require('../assets/images/motechstory.jpg');
+
 export default function SearchScreen() {
-  // Recent searches data 
+  // Recent searches data with LOCAL IMAGES
   const recentSearches = [
-    { id: '1', name: 'SaSa Letsie', type: 'person', image: 'https://randomuser.me/api/portraits/women/1.jpg' },
+    { id: '1', name: 'SaSa Letsie', type: 'person', image: profile1 },
     { id: '2', name: 'React Native Javascript', type: 'topic', image: null },
-    { id: '3', name: 'Sannere', type: 'person', image: 'https://randomuser.me/api/portraits/men/2.jpg' },
+    { id: '3', name: 'Mobile Tech', type: 'person', image: profile2 },
     { id: '4', name: 'make up', type: 'topic', image: null },
   ];
 
@@ -34,7 +38,7 @@ export default function SearchScreen() {
   const renderRecentItem = ({ item }) => (
     <TouchableOpacity style={styles.recentItem}>
       {item.type === 'person' ? (
-        <Image source={{ uri: item.image }} style={styles.recentImage} />
+        <Image source={item.image} style={styles.recentImage} />
       ) : (
         <View style={styles.recentIconContainer}>
           <Icon name="trending-up" size={20} color="#1877F2" />

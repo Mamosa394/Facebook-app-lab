@@ -1,4 +1,3 @@
-// screens/HomeScreen.js
 import React from 'react';
 import {
   View,
@@ -23,6 +22,7 @@ const profile4 = require('../assets/images/mufasaprofile.jpg');
 const profile5 = require('../assets/images/reactnative.png');
 const profile6 = require('../assets/images/Limkokwing University logo design.png');
 const userAvatar = require('../assets/images/mamosaprofile.jpg');
+const sasaPost = require('../assets/images/sasaPost.jpg');
 
 // STORIES DATA
 const storiesData = [
@@ -42,7 +42,7 @@ const postsData = [
     username: 'SaSa Letsie',
     profileImage: profile1,
     content: 'A beautiful day to be out❤️🫦',
-    image: null,
+    image: sasaPost,
     likes: 42,
     comments: 5,
     isOnline: true,
