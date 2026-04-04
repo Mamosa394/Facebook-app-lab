@@ -234,6 +234,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 8,
+    
   },
   storiesTitle: {
     fontSize: 26,
