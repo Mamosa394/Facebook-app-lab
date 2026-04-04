@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   storiesWrapper: {
-    marginTop: 8,
+    marginTop: 5,
     marginBottom: 4,
   },
   storiesHeader: {
