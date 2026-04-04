@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StatusBar,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Avatar from '../components/Avatar';
@@ -39,7 +40,7 @@ export default function AddPostScreen({ navigation }) {
             size={50}
           />
           <View style={styles.userTextInfo}>
-            <Text style={styles.userName}>John Doe</Text>
+            <Text style={styles.userName}>Mamosa Motsie</Text>
             <TouchableOpacity style={styles.privacyButton}>
               <Icon name="people" size={14} color="#65676b" />
               <Text style={styles.privacyText}> Friends</Text>

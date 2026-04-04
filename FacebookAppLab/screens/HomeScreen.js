@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   View,
   Text,
@@ -7,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -20,7 +20,7 @@ const profile2 = require('../assets/images/motechstory.jpg');
 const profile3 = require('../assets/images/matty.jpg');
 const profile4 = require('../assets/images/mufasaprofile.jpg');
 const profile5 = require('../assets/images/reactnative.png');
-const profile6 = require('../assets/images/Limkokwing University logo design.png');
+const profile6 = require('../assets/images/Limkokwing.png');
 const userAvatar = require('../assets/images/mamosaprofile.jpg');
 const sasaPost = require('../assets/images/sasaPost.jpg');
 

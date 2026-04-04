@@ -6,8 +6,8 @@ export default function Avatar({
   source, 
   size = 50, 
   onPress, 
-  showStoryRing = true,
-  showOnline = true,
+  showStoryRing = false,
+  showOnline = false,
   showAddIcon = false,
   borderColor = '#1877F2'
 }) {
@@ -30,7 +30,7 @@ export default function Avatar({
       )}
       <View style={[styles.avatarContainer, avatarSize]}>
         {source ? (
-          <Image source={{ uri: source }} style={[styles.avatar, avatarSize]} />
+          <Image source={source} style={[styles.avatar, avatarSize]} />
         ) : (
           <View style={[styles.placeholderAvatar, avatarSize]}>
             <Icon name="person" size={size * 0.5} color="#fff" />
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 4,
   },
   storyRing: {
     position: 'absolute',

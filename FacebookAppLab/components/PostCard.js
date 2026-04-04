@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Avatar from '../components/Avatar';
 
@@ -8,15 +8,15 @@ export default function PostCard({ post }) {
   const [likesCount, setLikesCount] = useState(post.likes);
 
   const handleLikes = () => {
-    if(isLiked){
+    if (isLiked) {
       setLikesCount(likesCount - 1);
       setIsLiked(false);
-    }
-    else {
+    } else {
       setLikesCount(likesCount + 1);
       setIsLiked(true);
     }
-  }
+  };
+
   return (
     <View style={styles.postCard}>
       {/* Post Header - Using Avatar component */}
@@ -39,41 +39,34 @@ export default function PostCard({ post }) {
       {/* Post Content */}
       <Text style={styles.postContent}>{post.content}</Text>
       
-      {/* Post Image (if exists) */}
+     
       {post.image && (
         <TouchableOpacity activeOpacity={0.9}>
-          <Avatar 
-            source={post.image} 
-            size="100%" 
-            imageStyle={styles.postImage}
-          />
+          <Image source={post.image} style={styles.postImage} />
         </TouchableOpacity>
       )}
 
-    
       <View style={styles.actionButtons}>
         <TouchableOpacity style={styles.actionButton} onPress={handleLikes}>
-
-
-  <Icon 
-    name={isLiked ? "heart" : "heart-outline"} 
-    size={24} 
-    color={isLiked ? "#FF3B30" : "#65676b"} 
-  />
-  <Text style={[styles.actionText, isLiked && styles.actionTextActive]}>
-    {likesCount}
-  </Text>
-</TouchableOpacity>
+          <Icon 
+            name={isLiked ? "heart" : "heart-outline"} 
+            size={24} 
+            color={isLiked ? "#FF3B30" : "#65676b"} 
+          />
+          <Text style={[styles.actionText, isLiked && styles.actionTextActive]}>
+            {likesCount}
+          </Text>
+        </TouchableOpacity>
         
-        <View style={styles.actionButton}>
+        <TouchableOpacity style={styles.actionButton}>
           <Icon name="chatbubble-outline" size={28} color="#65676b" />
           <Text style={styles.actionText}>{post.comments}</Text>
-        </View>
+        </TouchableOpacity>
         
-        <View style={styles.actionButton}>
+        <TouchableOpacity style={styles.actionButton}>
           <Icon name="share-outline" size={28} color="#65676b" />
           <Text style={styles.actionText}>Share</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -106,6 +99,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#050505',
     marginBottom: 2,
+  },
+  onlineDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#31A24C',
+    marginLeft: 6,
   },
   postTime: {
     fontSize: 15,
@@ -147,5 +147,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '500',
     color: '#65676b',
+  },
+  actionTextActive: {
+    color: '#FF3B30',
   },
 });
