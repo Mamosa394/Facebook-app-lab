@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Avatar from '../components/Avatar';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-//  IMPORT LOCAL IMAGE for user avatar
+//  IMPORT IMAGE
 const userAvatar = require('../assets/images/mamosaprofile.jpg');
 
 export default function AddPostScreen({ navigation }) {

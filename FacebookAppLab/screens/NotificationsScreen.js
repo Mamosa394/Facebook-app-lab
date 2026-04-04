@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-//  IMPORT LOCAL IMAGES (use the same ones from HomeScreen)
+//  IMPORT LOCAL IMAGES 
 const profile1 = require('../assets/images/sasa.jpg');
 const profile2 = require('../assets/images/motechstory.jpg');
 const profile3 = require('../assets/images/messi.jpg');
@@ -20,14 +20,14 @@ const profile5 = require('../assets/images/mufasaprofile.jpg');
 const profile6 = require('../assets/images/stunna.jpg');
 const profile7 = require('../assets/images/sasa.jpg');
 
-//  IMPORT LOCAL POST IMAGES (or use placeholder if you don't have them)
+//  IMPORT LOCAL POST IMAGES 
 const postImage1 = require('../assets/images/mufasapost.jpg');
 const postImage2 = require('../assets/images/mufasapost1.jpg');
 
 export default function NotificationsScreen() {
   const [activeTab, setActiveTab] = useState('all'); 
 
-  // Notifications Data with LOCAL IMAGES
+  // Notifications 
   const notificationsData = [
     {
       id: '1',

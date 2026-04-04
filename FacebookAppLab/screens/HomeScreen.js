@@ -14,7 +14,7 @@ import Avatar from '../components/Avatar';
 import PostCard from '../components/PostCard';
 import StoryItem from '../components/StoryItem';
 
-// IMPORT LOCAL IMAGES
+
 const profile1 = require('../assets/images/sasa.jpg');
 const profile2 = require('../assets/images/motechstory.jpg');
 const profile3 = require('../assets/images/matty.jpg');
@@ -24,7 +24,7 @@ const profile6 = require('../assets/images/Limkokwing.png');
 const userAvatar = require('../assets/images/mamosaprofile.jpg');
 const sasaPost = require('../assets/images/sasaPost.jpg');
 
-// STORIES DATA
+
 const storiesData = [
   { id: '1', name: 'Add Story', isAddStory: true },
   { id: '2', name: 'SaSa', image: profile1, isOnline: true },
@@ -35,7 +35,7 @@ const storiesData = [
   { id: '7', name: 'LUCT', image: profile6, isOnline: false },
 ];
 
-// POSTS DATA
+
 const postsData = [
   {
     id: '1',

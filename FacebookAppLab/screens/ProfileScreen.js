@@ -12,18 +12,18 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-//  IMPORT LOCAL IMAGES
+
 const profileImage = require('../assets/images/mamosaprofile.jpg');
 const coverImage = require('../assets/images/matchacover.jpg');
 
-//  IMPORT LOCAL POST IMAGES
+
 const postImage1 = require('../assets/images/mufasapost.jpg');
 const postImage2 = require('../assets/images/mufasapost1.jpg');
 
 export default function ProfileScreen() {
   const [activeTab, setActiveTab] = useState('posts'); 
 
-  //  User data with LOCAL IMAGES
+ 
   const user = {
     name: 'Mamosa Motsie',
     username: '_motsie',
@@ -38,7 +38,7 @@ export default function ProfileScreen() {
     coverImage: coverImage,
   };
 
-  // profile Sample posts data with LOCAL IMAGES
+ 
   const userPosts = [
     {
       id: '1',
@@ -66,7 +66,7 @@ export default function ProfileScreen() {
     },
   ];
 
-  // Render post item
+ 
   const renderPost = ({ item }) => (
     <View style={styles.postCard}>
       <Text style={styles.postContent}>{item.content}</Text>
